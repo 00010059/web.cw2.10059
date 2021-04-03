@@ -25,18 +25,24 @@ header {
   justify-content: space-between;
   height: 10vh;
   align-items: center;
-  max-width: 80%;
-  margin: auto;
+  /* max-width: 80%; */
+  /* margin: auto; */
+  border-bottom: 1px solid var(--border);
 }
 
 .logo {
   color: var(--border);
   transition: 0.3s;
+  margin-left: 100px;
   font-size: 35px;
 }
 
 .logo:hover {
   color: var(--title);
+}
+
+nav {
+  margin-right: 50px;
 }
 
 .nav-item {
@@ -169,4 +175,25 @@ img {
 img:hover {
   box-shadow: 0 0 10px var(--title);
   border-radius: 10px;
+}
+
+.blog-container {
+  color: var(--text);
+  max-width: 80%;
+  margin: 50px auto 100px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 40px;
+  margin: 10px auto 20px;
+}
+
+.author {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.body {
+  font-size: 20px;
 }

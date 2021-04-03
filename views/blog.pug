@@ -1,7 +1,8 @@
 extends layout.pug 
 
 block content 
-    img(src='/static/images/' + blog.image,  alt="", width=500)    
-    h1= blog.title 
-    p= blog.author 
-    p= blog.body
+    .blog-container 
+        img.img(src='/static/images/' + blog.image,  alt="", width=800)    
+        h1.title= blog.title 
+        p.author= blog.author 
+        p.body= blog.body
