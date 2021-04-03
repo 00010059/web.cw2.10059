@@ -18,6 +18,7 @@
   "homepage": "https://github.com/00010059/web.cw2.10059#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "multer": "^1.4.2",
     "pug": "^3.0.2"
   }
 }
