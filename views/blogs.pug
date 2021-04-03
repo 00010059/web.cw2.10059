@@ -2,5 +2,8 @@ extends layout.pug
 
 block content 
     each blog in blogs 
-        a(href="/blogs/" + blog.id)= blog.title
-        img(src='/static/images/' + blog.image,  alt="", width=500)    
+        .blogs-container
+            a(href="/blogs/" + blog.id)  
+                img(src='/static/images/' + blog.image,  alt="", width=800)    
+            a.link-title(href="/blogs/" + blog.id)= blog.title
+            a.delete.link-btn(href="/blogs/" + blog.id + '/delete') Delete 

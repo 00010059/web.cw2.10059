@@ -83,3 +83,90 @@ header {
   background: none;
   color: var(--text);
 }
+
+form {
+  max-width: 30%;
+  margin: auto;
+  display: flex;
+  margin-top: 20px;
+  flex-direction: column;
+}
+
+input {
+  border: none;
+  color: var(--text);
+  background: var(--background);
+  border-bottom: 1px solid var(--title);
+  height: 40px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+label {
+  color: var(--text);
+  font-size: 20px;
+  opacity: 0.5;
+}
+
+textarea {
+  background: var(--background);
+  border: 1px solid var(--border);
+  resize: none;
+  font-size: 20px;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+input:nth-child(5) {
+  border: none;
+  max-width: 40%;
+  margin: 5px auto 30px;
+  font-size: 15px;
+}
+
+.btn-create {
+  font-size: 20px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.btn-create:hover {
+  cursor: pointer;
+}
+
+.blogs-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  flex-direction: column;
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
+
+.link-title {
+  color: var(--text);
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+.delete {
+  margin-top: 20px;
+  font-size: 20px;
+  padding: 5px 20px;
+}
+
+img {
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+img:hover {
+  box-shadow: 0 0 10px var(--title);
+  border-radius: 10px;
+}
