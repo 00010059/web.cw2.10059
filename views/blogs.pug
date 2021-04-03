@@ -1,0 +1,6 @@
+extends layout.pug 
+
+block content 
+    each blog in blogs 
+        a(href="/blogs/" + blog.id)= blog.title
+        img(src='/static/images/' + blog.image,  alt="", width=500)    

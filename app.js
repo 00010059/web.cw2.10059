@@ -2,11 +2,23 @@ const express = require('express')
 const app = express()
 const fs = require('fs')
 var multer  = require('multer')
-var upload = multer({ dest: './public/images/' })
+const path = require('path')
+// var upload = multer({ dest: './public/images/' })
+
+
+const storageConfig = multer.diskStorage({
+    destination: (req, file, cb) =>{
+        cb(null, path.join(__dirname, 'public/images'));
+    },
+    filename: (req, file, cb) =>{
+        cb(null, id() + '.jpg');
+    }
+});
 
 app.set('view engine', 'pug')
 app.use('/static', express.static('public'))
 app.use(express.urlencoded({extended: false}))
+app.use(multer({ storage:storageConfig }).single("image"));
 
 
 app.get('/', (req, res) => {
@@ -18,11 +30,11 @@ app.get('/create', (req, res) => {
     res.render('create')
 })
 
-app.post('/create', upload.single('image'), (req, res) => {
-    const image = req.file
+app.post('/create', (req, res) => {
     const title = req.body.title
     const author = req.body.author
     const body = req.body.body
+    const image = req.file.filename
 
     fs.readFile('./data/blogs.json', (err, data) => {
         if (err) throw err
@@ -31,10 +43,10 @@ app.post('/create', upload.single('image'), (req, res) => {
 
         blogs.push({
             id: id(),
-            image: image,
             title: title,
             author: author,
             body: body,
+            image: image,
         })
 
         fs.writeFile('./data/blogs.json', JSON.stringify(blogs), err => {
@@ -44,6 +56,33 @@ app.post('/create', upload.single('image'), (req, res) => {
     })
 })
 
+
+//All Blogs
+
+app.get('/blogs', (req, res) => {
+
+    fs.readFile('./data/blogs.json', (err, data) => {
+        if (err) throw err
+        
+        const blogs = JSON.parse(data)
+        res.render('blogs', {blogs: blogs})
+    })
+})
+
+
+
+//Show individual
+
+app.get('/blogs/:id', (req, res) => {
+    const id = req.params.id
+    fs.readFile('./data/blogs.json', (err, data) => {
+        if (err) throw err
+        
+        const blogs = JSON.parse(data)
+        const blog = blogs.filter(blog => blog.id == id)[0]
+        res.render('blog', {blog: blog})
+    })
+})
 
 app.listen(5000,  err => {
     if(err) console.log(err)
