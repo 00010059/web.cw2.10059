@@ -1,5 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&family=Mukta&family=Titillium+Web&display=swap");
+:root {
+  --background: #0b0c10;
+  --title: #66fcf1;
+  --text: #c5c6c7;
+  --border: #45a29e;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Titillium Web", sans-serif;
+}
+
+body {
+  background: var(--background);
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  height: 10vh;
+  align-items: center;
+  max-width: 80%;
+  margin: auto;
+}
+
+.logo {
+  color: var(--border);
+  transition: 0.3s;
+  font-size: 35px;
+}
+
+.logo:hover {
+  color: var(--title);
+}
+
+.nav-item {
+  margin-right: 30px;
+  font-size: 25px;
+  color: var(--border);
+  transition: 0.3s;
+}
+
+.nav-item:hover {
+  color: var(--title);
+}
+
+.home-container {
+  max-width: 60%;
+  margin: 100px auto;
+}
+
+.main {
+  font-size: 45px;
+  color: var(--title);
+}
+
+.acknowledgement {
+  max-width: 60%;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  color: var(--text);
+}
+
+.link-btn {
+  font-size: 30px;
+  color: #000;
+  padding: 10px 40px;
+  font-weight: bolder;
+  background: var(--title);
+  border: 1px solid var(--border);
+  transition: 0.3s;
+}
+
+.link-btn:hover {
+  border: 1px solid var(--border);
+  background: none;
+  color: var(--text);
 }

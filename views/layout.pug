@@ -1,13 +1,14 @@
 doctype html
 html(lang="en")
     head
-        link(rel="stylesheet", href="/static/styles.css")
+        link(rel="stylesheet", href="/static/styles/styles.css")
         title Blog
     body 
         header
-            a(href="/") Bloggo
+            a.logo(href="/") Bloggo
 
-        nav 
-            a.nav-item(href="/blogs") All blogs
+            nav 
+                a.nav-item(href="/blogs") All blogs
+                a.nav-item(href="/create") Publish 
         
         block content
