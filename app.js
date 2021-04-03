@@ -58,16 +58,8 @@ app.post('/create', (req, res) => {
 
 
 //All Blogs
-
-app.get('/blogs', (req, res) => {
-
-    fs.readFile('./data/blogs.json', (err, data) => {
-        if (err) throw err
-        
-        const blogs = JSON.parse(data)
-        res.render('blogs', {blogs: blogs})
-    })
-})
+const all = require('./routes/all.js')
+app.use('/blogs', all)
 
 
 
@@ -86,36 +78,16 @@ app.get('/blogs/:id', (req, res) => {
 
 
 //Delete
-
-app.get('/blogs/:id/delete', (req, res) => {
-    fs.readFile('./data/blogs.json', (err, data) => {
-        if (err) throw err
-
-        const id = req.params.id
-        
-        const blogs = JSON.parse(data)
-        const blog = blogs.findIndex((e) => e.id == id)
-        blogs.splice(blog, 1)
-
-        fs.writeFile('./data/blogs.json', JSON.stringify(blogs), err => {
-            if (err) throw err
-            res.redirect('/blogs?deleted=success')
-        })
-    })
-})
-
+const deleteBtn = require('./routes/delete.js')
+app.use('/blogs/:id/delete', deleteBtn)
 
 
 //Api
 
-app.get('/api/v1/blogs', (req, res) => {
-    fs.readFile('./data/blogs.json', (err, data) => {
-        if (err) throw err
-        
-        const blogs = JSON.parse(data)
-        res.json(blogs)
-    })
-})
+const api = require('./routes/api.js')
+app.use('/api/v1/blogs', api)
+
+
 
 app.listen(5000,  err => {
     if(err) console.log(err)
