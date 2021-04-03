@@ -84,6 +84,19 @@ app.get('/blogs/:id', (req, res) => {
     })
 })
 
+
+
+//Api
+
+app.get('/api/v1/blogs', (req, res) => {
+    fs.readFile('./data/blogs.json', (err, data) => {
+        if (err) throw err
+        
+        const blogs = JSON.parse(data)
+        res.json(blogs)
+    })
+})
+
 app.listen(5000,  err => {
     if(err) console.log(err)
 

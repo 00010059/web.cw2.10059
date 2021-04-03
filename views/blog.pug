@@ -1,0 +1,7 @@
+extends layout.pug 
+
+block content 
+    img(src='/static/images/' + blog.image,  alt="", width=500)    
+    h1= blog.title 
+    p= blog.author 
+    p= blog.body
